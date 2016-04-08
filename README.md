@@ -15,11 +15,6 @@ At this point, you have deployed a few apps throughout the program. But, most (i
 
 MEAN apps require a little more work to deploy, as there is less "magic" built in compared to Rails. This lesson will run you through the steps to setting your Mongo DB to work in production, as well as use a little "error-driven" process to deploy the app.  We will also briefly touch upon other deployment options; specifically Digital Ocean.
 
-Digital Ocean has its benefits over Heroku:
-* **Quick set-up.** Can set up a new Virtual Private Server (VPS) in 60 seconds.
-* **Very fast.** Their VPS's run on solid state drives.
-* **Cheaper.** (when necessary) In a sense. You're paying for convenience and reliability.
-
 ## Setup
 
 We're going to go ahead and deploy the [When President](https://github.com/ga-wdi-exercises/whenpresident) app, and we're going to start under the assumption that you have only been working in development on this app so far.
@@ -34,7 +29,7 @@ BUT, as we all know, nothing is ever that simple right? Let's get into it.
 
 ## You Do: Initial Create
 
-Fork and clone [this](https://github.com/ga-wdi-exercises/whenpresident) down, then **checkout** to the `heroku_start` branch.
+Fork and clone [this](https://github.com/ga-wdi-exercises/whenpresident) down, then **checkout** to the `deploy_start` branch.
 
 Once done, change into the proper directory and run the basic setup commands:
 - `heroku create`
@@ -188,9 +183,14 @@ if(process.env.NODE_ENV == "production"){
 
 Node provides a built-in environment variable, `NODE_ENV`. When a node app is deployed, the ENV variable is set as "production".  Therefore, the above is simply stating that we should use the MongoLab URI (in other words, the link that connects us to the MongoLab database) when in production, and the local db all other times.
 
-## Break
+## Break (10 mins)
 
 ## Digital Ocean
+
+Digital Ocean has its benefits over Heroku:
+* **Quick set-up.** Can set up a new Virtual Private Server (VPS) in 60 seconds.
+* **Very fast.** Their VPS's run on solid state drives.
+* **Cheaper.** (when necessary) In a sense. You're paying for convenience and reliability.
 
 ### Create a Digital Ocean account
 
