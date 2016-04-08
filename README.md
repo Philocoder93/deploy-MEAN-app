@@ -29,7 +29,7 @@ BUT, as we all know, nothing is ever that simple right? Let's get into it.
 
 ## You Do: Initial Create
 
-Fork and clone [this](https://github.com/ga-wdi-exercises/whenpresident) down, then **checkout** to the `deploy_start` branch.
+Fork and clone [this](https://github.com/ga-wdi-exercises/whenpresident) down, then **checkout** to the `deploy_starter` branch.
 
 Once done, change into the proper directory and run the basic setup commands:
 - `heroku create`
