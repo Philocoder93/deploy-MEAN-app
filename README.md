@@ -3,9 +3,10 @@
 ## Learning Objectives
 
 - Understand the steps to deploy a MEAN stack app
-- Determine how to specific development mongodb vs. production
+- Determine how to specify development mongodb vs. production
 - Use Heroku logs to address deployment errors
 - Explain the use of Procfile
+- Describe what addons are and used for
 - Introduce other deployment options such as Digital Ocean
 
 
