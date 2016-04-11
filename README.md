@@ -1,4 +1,4 @@
-# Deploying a Mean App
+# Deploying a MEAN App
 
 ## Learning Objectives
 
@@ -12,7 +12,7 @@
 
 ## Framing (5 mins)
 
-At this point, you have deployed a few apps throughout the program. But, most (if not all) have been applications with a Rails backend. Heroku makes deploying a Rails app easy (right?). Minus a few complications, all it takes is `heroku create`, `git push heroku master`, and `heroku run rake db:migrate`. As long as your app is working locally, is should typically work in production.
+At this point, you have deployed a few apps throughout the program. However, most (if not all) have been applications built with Rails. Heroku makes deploying a Rails app easy (right?). Minus a few complications, all it takes is `heroku create`, `git push heroku master`, and `heroku run rake db:migrate`. As long as your app is working locally, it should typically work in deployment.
 
 MEAN apps require a little more work to deploy, as there is less "magic" built in compared to Rails. This lesson will run you through the steps to setting your Mongo DB to work in production, as well as use a little "error-driven" process to deploy the app.  We will also briefly touch upon other deployment options; specifically Digital Ocean.
 
@@ -22,13 +22,13 @@ We're going to go ahead and deploy the [When President](https://github.com/ga-wd
 
 ### Example deploy
 
-Deploying can be as simple as 2 lines of CLI if you have everything set up properly!
+If everything is set up properly, deploying can be as simple as 2 lines of CLI!
 - `heroku create`
 - `git push heroku master`
 
-BUT, as we all know, nothing is ever that simple right? Let's get into it.
+But, as we all know, nothing is ever that simple right? Let's get into it.
 
-## You Do: Initial Create
+## You Do: Initial Create (5 mins)
 
 Fork and clone [this](https://github.com/ga-wdi-exercises/whenpresident) down, then **checkout** to the `deploy_starter` branch.
 
@@ -36,13 +36,13 @@ Once done, change into the proper directory and run the basic setup commands:
 - `heroku create`
 - `git push heroku deploy_starter:master`
   - note, **make sure you run the above command from the `deploy_starter` branch**
-- `heroku open` (not actually necessary but easy)
+- `heroku open`
 
-Most likely you will receive the dreaded heroku error:
+Most likely you will receive the standard heroku error:
 
 ![Heroku error](node_error.png "Heroku Error")
 
-But wait, why doesn't that work? There is no `rake db:migrate` like in Rails, so what went wrong? (hint: it is sort of similar!)
+But wait, why doesn't that work? How do we figure out what went wrong?
 
 ### Heroku Logs
 
@@ -52,16 +52,13 @@ In your console, run `heroku logs`, and see what you can find. You should see so
 
 What do all of these NPM errors mean??
 
-### Think/Pair/Share
+### Think/Pair/Share (10 mins)
 
 Do a couple minutes of research on stack overflow (or elsewhere) on your own. Then pair up and discuss what might be the issue.
 
 *Hint*: try to google one line at a time
 
->This is pretty new stuff, so the solution won't necessarily be apparent or obvious!
-
-
-## Procfiles
+## Procfiles (10 mins)
 
 Notice the error in the log:
 `npm ERR! missing script: start`
@@ -88,13 +85,13 @@ Instead of editing that file, we create a new file called `Procfile` in the root
 `web` is important here! It specifices to Heroku to receive web traffic and provide the proper HTTP routing based on what is defined in the `index.js` file.
 
 
-## You Do: Catch up
+## You Do: Catch up (5 mins)
 
 Go ahead and add in the Procfile with the correct line of code to the root of your directory.  
 
 `add`, `commit`, and `git push heroku deploy_starter:master` again, and open the app in the browser. What do you see now?
 
-### T/P/S
+### T/P/S (10 mins)
 
 Looks like another error!
 
@@ -102,9 +99,9 @@ Looks like another error!
 
 Do a couple more minutes of research on this error log. Then pair up and discuss what might be the issue.
 
-## Break (10 mins)
+## Break (10/55)
 
-## Setting the Server
+## Setting the Server (10 mins)
 
 Take a look at the bottom of the `index.js` file:
 
@@ -114,9 +111,7 @@ app.listen(3001, function() {
 })
 ```
 
-What does that look like?
-
-We need specify to Heroku NOT to use our our local server, and connect to `http://localhost:3001/`. In Rails, the default local server is `http://localhost:3000/`, but we never need to specify that, and Heroku understands to switch to its own server once we push up.  With this app, we specify what server we want to run, and we therefore need to take that further and specify what server we want run and *when*.
+We need specify to Heroku *not* to use our our local server, and connect to `http://localhost:3001/`. In Rails, the default local server is `http://localhost:3000/`, but we never need to specify that, and Heroku understands to switch to its own server once we push up.  With this app, we specify what server we want to run, and we therefore need to take that further and specify what server we want run and *when*.
 
 To do this, we are going to `set` the port to work through either local or production:
 
@@ -134,7 +129,7 @@ app.listen(app.get("port"), function(){
 
 ```
 
-## You Do: Commit Again!
+## You Do: Commit Again! (15 mins)
 
 Success! Your app should be up and running.. Or is it?
 
@@ -145,9 +140,11 @@ Try the following:
 - Try adding a new candidate
   - what happens?
 
-**Take 5 minutes to think and do some research on this**
+### T/P/S (10 mins)
 
-## Heroku Addons
+Take 5 minutes to think and do some research on this
+
+## Heroku Addons (10 mins)
 
 Heroku provides useful tools called addons that one can install to make your deployed app must easier.
 >These are similar in a sense to Rails gems, or npm modules, except they reside only in your deployed application.
@@ -184,9 +181,9 @@ if(process.env.NODE_ENV == "production"){
 
 Node provides a built-in environment variable, `NODE_ENV`. When a node app is deployed, the ENV variable is set as "production".  Therefore, the above is simply stating that we should use the MongoLab URI (in other words, the link that connects us to the MongoLab database) when in production, and the local db all other times.
 
-## Break (10 mins)
+## Break (10/110)
 
-## Digital Ocean
+## Digital Ocean (40 mins)
 
 Digital Ocean has its benefits over Heroku:
 * **Quick set-up.** Can set up a new Virtual Private Server (VPS) in 60 seconds.
