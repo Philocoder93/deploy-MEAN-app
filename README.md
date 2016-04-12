@@ -278,18 +278,25 @@ In the interest of time, however, we'll continue using the root user.
 ```
 $ mkdir /var/www
 $ cd /var/www
-$ git clone git@github.com:ga-wdi-exercises/whenpresident.git
+$ git clone https://github.com/ga-wdi-exercises/whenpresident.git
 ```
 > `/var/www` is going to be the base directory for all applications in this server.  
 
-> It's important that we run this application from the deploy branch!  
-
 ```
+$ cd whenpresident
+git checkout deploy_starter
+npm install
 $ node db/seed.js
 $ node index.js
 ```
 
-Visit http://YOUR.IP.ADDRESS:3000/
+*Note*: if you get an error here, follow the steps in [this link](http://askubuntu.com/questions/426750/how-can-i-update-my-nodejs-to-the-latest-version/480642#480642)
+
+Then, type in `node -v`
+
+If another error shows up saying `-bash: no such file or directory`, run the following `ln -sf /usr/local/bin/node /usr/bin/node`
+
+Visit http://YOUR.IP.ADDRESS:3001/
 
 It works!
 
@@ -303,7 +310,9 @@ Enter the following into your **local** terminal, **not your droplet!** `$ sudo 
 Once in that file, enter the following line below the one that reads: `127.0.0.1  localhost`
 * `your-droplet-ip-address    whenpresident.com`
 
-What do you see when you visit http://whenpresident.com:3000 in the browser?
+>[vim commands](http://www.radford.edu/~mhtay/CPSC120/VIM_Editor_Commands.htm)
+
+What do you see when you visit http://whenpresident.com:3001 in the browser?
 * WOAH. We just aliased the `whenpresident.com` URL to our droplet's IP address.
 * We already do the same thing with `localhost` and `http://127.0.0.1`.
 * We're going to make a similar adjustment to our server next.
