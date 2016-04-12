@@ -190,7 +190,7 @@ Digital Ocean has its benefits over Heroku:
 * **Very fast.** Their VPS's run on solid state drives.
 * **Cheaper.** (when necessary) In a sense. You're paying for convenience and reliability.
 
-### Create a Digital Ocean account
+### You do: Create a Digital Ocean account (15 mins)
 
 Digital Ocean only offers paid accounts, but they charge fractions of a cent per hour your server is running.
 * [Create Account](https://www.digitalocean.com/?refcode=01b24a40b88f).
@@ -248,6 +248,8 @@ We also need to set up a Mongo database for our application.
 $ sudo apt-get install mongodb
 ```
 
+## STOP
+
 ### Install a web server
 
 * Today we'll be using one called **nginx.**
@@ -267,7 +269,7 @@ You'll know nginx is up and running it you visit your server's IP address (e.g.,
 
 nginx is ready! Now we need our application to tell it what exactly to do with those HTTP requests...  
 
-### Clone the app to VPS
+### You do: Clone the app to VPS (10 mins)
 
 Typically you would create a user account to handle deploys and permissions. **Why is that?**
 * If you're logged in as root, that means every application is running with root privileges. Any security vulnerability in one of those applications could allow for unwanted access everywhere, whether that be by a third party or accidental deletion of files.
@@ -299,6 +301,8 @@ If another error shows up saying `-bash: no such file or directory`, run the fol
 Visit http://YOUR.IP.ADDRESS:3001/
 
 It works!
+
+## STOP
 
 ### Set up Domain
 
