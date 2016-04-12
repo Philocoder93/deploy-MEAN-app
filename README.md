@@ -193,7 +193,7 @@ Digital Ocean has its benefits over Heroku:
 ### Create a Digital Ocean account
 
 Digital Ocean only offers paid accounts, but they charge fractions of a cent per hour your server is running.
-* You can probably find a promo code online [through Google](https://www.google.com/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8#q=digitalocean+promo+code).
+* [Create Account](https://www.digitalocean.com/?refcode=01b24a40b88f).
 * Feel free to delete your droplet/account after this class.
 * If you prefer not to create an account at all, sit with a partner and run through the exercise together
 
