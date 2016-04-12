@@ -30,7 +30,7 @@ But, as we all know, nothing is ever that simple right? Let's get into it.
 
 ## You Do: Initial Create (5 mins)
 
-Fork and clone [this](https://github.com/ga-wdi-exercises/whenpresident) down, then **checkout** to the `deploy_starter` branch.
+`cd` into your whenPresident directory, then `git checkout deploy_starter`.
 
 Once done, change into the proper directory and run the basic setup commands:
 - `heroku create`
@@ -63,7 +63,7 @@ Do a couple minutes of research on stack overflow (or elsewhere) on your own. Th
 Notice the error in the log:
 `npm ERR! missing script: start`
 
-Looking into our `package.json`, you should see something like the following:
+Looking into our `package.json` ([more info](https://docs.npmjs.com/files/package.json)), you should see something like the following:
 
 ```js
 {
@@ -324,7 +324,7 @@ What do you see when you visit http://whenpresident.com:3001 in the browser?
 
 ## Configure a Reverse Proxy Server
 
-Now we're going to use nginx to receive and direct HTTP requests (i.e., act as a "reverse proxy server").  
+Now we're going to use nginx to receive and direct HTTP requests (i.e., act as a "[reverse proxy server](https://www.nginx.com/resources/glossary/reverse-proxy-server/)").  
 
 Enter the below commands in your **droplet console**...
 
@@ -361,7 +361,7 @@ server{
 Now, restart nginx. What do you see?
 
 ```
-$ sudo service nginx restart
+$ service nginx restart
 $ node /var/www/whenpresident
 ```
 
