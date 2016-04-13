@@ -32,6 +32,8 @@ But, as we all know, nothing is ever that simple right? Let's get into it.
 
 `cd` into your whenPresident directory, then `git checkout deploy_starter`.
 
+If that doesn't work, try to `fetch` the branch from `upstream` and then checkout. If *that* doesn't work, just go ahead and clone the app down into a new folder (again)
+
 Run the basic setup commands:
 - `heroku create`
 - `git push heroku deploy_starter:master`
@@ -225,9 +227,9 @@ Once your server is up and running, let's log into it via the Terminal: `$ ssh r
 Because we're running an Express application and need to clone it from a GitHub repo, we need to install Node, Npm and Git.
 
 ```
-$ sudo apt-get update
-$ sudo apt-get install nodejs npm git
-$ sudo ln -s /usr/bin/nodejs /usr/bin/node
+sudo apt-get update
+sudo apt-get install nodejs npm git
+sudo ln -s /usr/bin/nodejs /usr/bin/node
 ```
 > `apt-get` is Ubuntu's package management program, not unlike npm for Node and gem for Ruby.  
 
@@ -245,7 +247,7 @@ You can verify if Node and Git were properly installed by typing `$ which git` o
 We also need to set up a Mongo database for our application.
 
 ```
-$ sudo apt-get install mongodb
+sudo apt-get install mongodb
 ```
 
 ## STOP
@@ -261,7 +263,7 @@ A fast web server with low memory usage.
 * Apache is a popular alternative.
 * We can install nginx like so...
 
-`$ sudo apt-get install nginx`
+`sudo apt-get install nginx`
 
 You'll know nginx is up and running it you visit your server's IP address (e.g., `http://INSERT.IP.ADDRESS`) in the browser. You should see something like this...  
 
@@ -278,18 +280,18 @@ Typically you would create a user account to handle deploys and permissions. **W
 In the interest of time, however, we'll continue using the root user.  
 
 ```
-$ mkdir /var/www
-$ cd /var/www
-$ git clone https://github.com/ga-wdi-exercises/whenpresident.git
+mkdir /var/www
+cd /var/www
+git clone https://github.com/ga-wdi-exercises/whenpresident.git
 ```
 > `/var/www` is going to be the base directory for all applications in this server.  
 
 ```
-$ cd whenpresident
+cd whenpresident
 git checkout deploy_starter
 npm install
-$ node db/seed.js
-$ node index.js
+node db/seed.js
+node index.js
 ```
 
 *Note*: if you get an error here, follow the steps in [this link](http://askubuntu.com/questions/426750/how-can-i-update-my-nodejs-to-the-latest-version/480642#480642)
@@ -329,8 +331,8 @@ Now we're going to use nginx to receive and direct HTTP requests (i.e., act as a
 Enter the below commands in your **droplet console**...
 
 ```
-$ cd /etc/nginx/sites-enabled/
-$ sudo vim whenpresident.com
+cd /etc/nginx/sites-enabled/
+sudo vim whenpresident.com
 ```
 > Each file in this `sites-enabled` directory is a "virtual host" that represents an application hosted on our server. We don't actually host whenpresident.com, but because we set up a local proxy server we can pretend we do!
 
@@ -361,8 +363,8 @@ server{
 Now, restart nginx. What do you see?
 
 ```
-$ service nginx restart
-$ node /var/www/whenpresident
+service nginx restart
+node /var/www/whenpresident
 ```
 
 ![Bad gateway](img/bad-gateway.png)
@@ -372,9 +374,9 @@ Hm, a "bad gateway" error...
 * We could fix this by going back and running `node index.js`. Or we could make it so our app runs..."forever."
 
 ```
-$ npm install -g forever
-$ cd /path/to/app
-$ forever start index.js
+npm install -g forever
+cd /path/to/app
+forever start index.js
 ```
 > Forever is an npm module that allows a node script to run continuously. Learn more about it [here](https://www.npmjs.com/package/forever).
 
