@@ -32,7 +32,7 @@ But, as we all know, nothing is ever that simple right? Let's get into it.
 
 `cd` into your whenPresident directory, then `git checkout deploy_starter`.
 
-Once done, change into the proper directory and run the basic setup commands:
+Run the basic setup commands:
 - `heroku create`
 - `git push heroku deploy_starter:master`
   - note, **make sure you run the above command from the `deploy_starter` branch**
