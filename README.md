@@ -179,8 +179,8 @@ If you head to your [heroku.com](heroku.com) dashboard and check the app, you wi
     $ heroku config:set MONGOLAB_URL=mongodb://test:testerson@ds015760.mlab.com:15760/yourappname
     ```
 
-- `$ heroku run node db/seed.js`
-- `$ heroku open`
+0. `$ heroku run node db/seed.js`
+0. `$ heroku open`
 
 ### What Now?
 
