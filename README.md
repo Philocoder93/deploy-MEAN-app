@@ -167,18 +167,18 @@ Let's use the second option, and once done, run `heroku config` and check to mak
 
 If you head to your [heroku.com](heroku.com) dashboard and check the app, you will see that MongoLab has been added!
 
-#### Alternately:
-- Go to www.mongolab.com and sign up / sign in
-- Create a new "Single Node" database with the "Sandbox" tier
-- Click on the database
-- Click "Users"
-- Create a new user. (This is *not* the user with which you logged in to Mongolab.) "User" in this context really means "an app that has access to your database". There's no need for security now; I used the username "test" with a password of "testerson".
-- Copy the "To connect using a driver" URL from the top of the Users page.
-- Set the URL as an environment variable called MONGOLAB_URL using `heroku config:set` as below, filling in the username and password you just created on the "Users" page. For example:
+## Alternative: MongoLab Deployment Sans Heroku Addons
+0. Go to www.mongolab.com and sign up / sign in
+0. Create a new "Single Node" database with the "Sandbox" tier
+0. Click on the database
+0. Click "Users"
+0. Create a new user. (This is *not* the user with which you logged in to Mongolab.) "User" in this context really means "an app that has access to your database". There's no need for security now; I used the username "test" with a password of "testerson".
+0. Copy the "To connect using a driver" URL from the top of the Users page.
+0. Set the URL as an environment variable called MONGOLAB_URL using `heroku config:set` as below, filling in the username and password you just created on the "Users" page. For example:
     ```
     $ heroku config:set MONGOLAB_URL=mongodb://test:testerson@ds015760.mlab.com:15760/yourappname
     ```
-    
+
 - `$ heroku run node db/seed.js`
 - `$ heroku open`
 
