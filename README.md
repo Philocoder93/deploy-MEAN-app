@@ -190,7 +190,7 @@ In the `connection.js` file, we add the following:
 
 ```js
 if(process.env.NODE_ENV == "production"){
-  mongoose.connect(process.env.MONGOLAB_URI);
+  mongoose.connect(process.env.MONGOLAB_URL);
 }else{
   mongoose.connect("mongodb://localhost/whenpresident");
 }
